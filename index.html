@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Furkan Shaikh — Portfolio</title>
+  <meta name="description" content="Portfolio of Furkan Shaikh — Projects in Web, AI/ML, Android, and Backend." />
+  <meta name="author" content="Furkan Shaikh" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='62' font-size='60' text-anchor='middle' font-family='Segoe UI, Roboto, Arial' %3EF%3C/text%3E%3C/svg%3E" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Furkan Shaikh — Portfolio" />
+  <meta property="og:description" content="Projects in Web, AI/ML, Android, and Backend." />
+  <meta property="og:image" content="https://vercel.com/api/www/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root {
+      --bg: #0b0e14;
+      --surface: #11151f;
+      --muted: #9aa4b2;
+      --text: #e6eef8;
+      --brand: #6ae3ff;
+      --brand-2: #7cf29a;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius-xl: 18px;
+      --radius-2xl: 24px;
+      --maxw: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(106,227,255,0.12), transparent 60%),
+                  radial-gradient(800px 400px at 5% -10%, rgba(124,242,154,0.12), transparent 60%),
+                  var(--bg);
+      line-height: 1.6;
+    }
+
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      position: sticky; top: 0; z-index: 40;
+      backdrop-filter: saturate(180%) blur(10px);
+      background: rgba(11,14,20,0.75);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav {
+      max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 20px;
+    }
+    .brand { font-weight: 700; letter-spacing: 0.3px; }
+    .tag { color: var(--muted); font-size: 0.9rem; }
+    .nav a { margin-left: 18px; font-size: 0.95rem; color: var(--text); opacity: 0.85; }
+    .nav a:hover { opacity: 1; }
+
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 32px 20px; }
+
+    .hero {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: center; padding: 56px 0 12px;
+    }
+    .hero h1 { font-size: clamp(2rem, 3.6vw, 3rem); line-height: 1.15; margin: 0 0 12px; }
+    .hero p { color: var(--muted); margin: 0 0 24px; }
+    .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, rgba(106,227,255,0.18), rgba(124,242,154,0.18));
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--text); font-weight: 600; text-decoration: none; box-shadow: var(--shadow);
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.secondary { background: transparent; border: 1px solid rgba(255,255,255,0.12); box-shadow: none; }
+
+    .hero-card { background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-2xl);
+      padding: 22px; box-shadow: var(--shadow);
+    }
+
+    section { padding: 28px 0; }
+    .section-title { font-size: 1.3rem; letter-spacing: .3px; margin: 0 0 14px; color: #dce6f5; }
+
+    .grid { display: grid; gap: 16px; }
+    @media (min-width: 820px) { .grid.cols-3 { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 819.98px) { .hero { grid-template-columns: 1fr; } }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-xl); padding: 18px; box-shadow: var(--shadow);
+    }
+    .card h3 { margin: 0 0 6px; font-size: 1.05rem; }
+    .card .stack { font-size: .9rem; color: var(--muted); margin-bottom: 10px; }
+    .card p { font-size: .95rem; color: #d9e4f2; }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    .chip { padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); font-size: .8rem; opacity: .9; }
+
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+    .link-btn { font-size: .9rem; padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.14); }
+
+    .about { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    @media (max-width: 819.98px) { .about { grid-template-columns: 1fr; } }
+    
+    .experience-item {
+        margin-bottom: 20px;
+    }
+
+    .experience-item h3 {
+        margin: 0;
+        font-size: 1.1rem;
+    }
+
+    .experience-item .role-title {
+        font-weight: bold;
+    }
+    
+    .experience-item .company-name {
+        font-style: italic;
+    }
+
+    .experience-item .date {
+        color: var(--muted);
+        font-size: 0.9rem;
+    }
+
+    .experience-item ul {
+        margin: 8px 0 0 18px;
+        padding: 0;
+        color: #d9e4f2;
+        font-size: 0.95rem;
+    }
+
+    .experience-item li {
+        margin-bottom: 4px;
+    }
+
+    .kv { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+    .kv .kvc { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 12px; }
+    .kvc .k { font-size: .8rem; color: var(--muted); }
+    .kvc .v { font-weight: 700; }
+
+    footer { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 24px; }
+    .foot { max-width: var(--maxw); margin: 0 auto; padding: 20px; color: var(--muted); font-size: .9rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+
+    /* Fancy focus ring */
+    :focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 10px; }
+
+    /* Modal for "Coming Soon" */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.7);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+    .modal-content {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.1);
+      margin: 15% auto;
+      padding: 24px;
+      border-radius: var(--radius-xl);
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .modal-content h3 {
+      margin-top: 0;
+      font-size: 1.5rem;
+    }
+    .modal-content p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .close-btn {
+      background: var(--brand);
+      color: var(--bg);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .close-btn:hover {
+      background: #50c4e8;
+    }
+
+    /* Floating WhatsApp Button */
+    .whatsapp-btn {
+      position: fixed;
+      width: 50px;
+      height: 50px;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: #FFF;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      line-height: 50px;
+      box-shadow: var(--shadow);
+      z-index: 100;
+      transition: transform 0.2s;
+    }
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <header aria-label="Primary">
+    <nav class="nav" role="navigation">
+      <div>
+        <span class="brand">Furkan Shaikh</span>
+        <span class="tag">• ML & Backend</span>
+      </div>
+      <div>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#resume">Resume</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="home">
+      <div>
+        <h1>Building reliable systems at the intersection of <span style="color:var(--brand)">ML</span> and <span style="color:var(--brand-2)">Backend</span>.</h1>
+        <p>
+          I design and develop production-grade applications across Web, Android, and AI/ML. Below is a curated selection of my college-era projects demonstrating end‑to‑end ownership—from data and models to APIs and UI.
+        </p>
+        <div class="cta">
+          <a class="btn" href="#projects">Explore Projects</a>
+        </div>
+      </div>
+      <div class="hero-card" aria-hidden="true">
+        <div class="kv">
+          <div class="kvc"><div class="k">Primary Stack</div><div class="v">Python, Java, JS</div></div>
+          <div class="kvc"><div class="k">ML/DS</div><div class="v">scikit‑learn, pandas</div></div>
+          <div class="kvc"><div class="k">Backend</div><div class="v">Flask, JSP/Servlets</div></div>
+          <div class="kvc"><div class="k">Infra</div><div class="v">MySQL, Streamlit</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" aria-label="Projects">
+      <h2 class="section-title">Selected Projects</h2>
+      <div class="grid cols-3" id="project-grid"></div>
+    </section>
+    
+    <section id="experience" aria-label="Experience">
+      <h2 class="section-title">Experience</h2>
+      <div class="card">
+        <div class="experience-item">
+          <h3>
+            <span class="role-title">Machine Learning Intern</span> - <span class="company-name">Bamboo Digital</span>
+            <br>
+            <span class="date">Oct 2023 – Feb 2023</span>
+          </h3>
+          <ul>
+            <li>Researched competitor AI model architectures, identified gaps in existing tools, and documented findings for technical reports and project documentation.</li>
+            <li>Designed system architecture diagrams (ERDs, journey maps) and developed an automated Python web scraper to collect and process datasets from sources like Google Ads Library and Meta Ads Library.</li>
+            <li>Cleaned, analyzed, and prepared datasets for machine learning workflows, and assisted in AI model testing and evaluation to ensure accuracy and performance.</li>
+          </ul>
+        </div>
+        <div class="experience-item">
+          <h3>
+            <span class="role-title">Managing Teacher</span> - <span class="company-name">The Empowering Earth Institute</span>
+            <br>
+            <span class="date">Jan 2024 - May 2024</span>
+          </h3>
+          <ul>
+            <li>Spearheaded the planning and execution of a premier event, as Teacher Incharge for over 250 in-person educators and facilitating virtual participation for more than 10,000 attendees.</li>
+            <li>Through the development and delivery of comprehensive workshops, keynote speeches, and AI tool exhibitions,</li>
+            <li>Successfully bridged the digital divide, enabling the integration of advanced AI technologies into Caribbean classrooms and transforming educational practices.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about" aria-label="About">
+      <div class="card">
+        <h2 class="section-title">About</h2>
+        <p>
+          I am a Computer Science student specializing in Machine Learning and Backend Development. I enjoy turning ideas into usable products—designing clean APIs, building robust data pipelines, and crafting clear interfaces.
+        </p>
+        <div class="chips" aria-label="Skills">
+          <span class="chip">Python</span>
+          <span class="chip">Java</span>
+          <span class="chip">Flask</span>
+          <span class="chip">Streamlit</span>
+          <span class="chip">JSP/Servlets</span>
+          <span class="chip">MySQL</span>
+          <span class="chip">scikit-learn</span>
+          <span class="chip">Pandas</span>
+          <span class="chip">Plotly</span>
+          <span class="chip">Android (Java)</span>
+        </div>
+      </div>
+      <div class="card" id="resume">
+        <h2 class="section-title">Resume</h2>
+        <p>Prefer a concise overview? Download my one‑page resume.</p>
+        <div class="actions">
+          <a class="link-btn" href="#" id="resumeLink" download>Download PDF</a>
+          <button class="link-btn" id="copyEmail" type="button" aria-label="Copy email">Copy Email</button>
+        </div>
+        <p id="copyMsg" style="color:var(--muted); font-size:.9rem; margin-top:6px;" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section id="contact" aria-label="Contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="card">
+        <p>
+          Open to internships and project collaborations. Reach me via email or LinkedIn.
+        </p>
+        <div class="actions">
+          <a class="link-btn" href="mailto:furkan710284@gmail.com">furkan710284@gmail.com</a>
+          <a class="link-btn" href="https://wa.me/919607468554" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="link-btn" href="https://www.linkedin.com/in/furkan-shaikh-b18949262/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="link-btn" href="https://github.com/furkanshaikh313" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <div class="cta" style="margin-top: 20px;">
+          <a class="btn secondary" href="#contact">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot">
+      <span>© <span id="year"></span> Furkan Shaikh</span>
+      <span>Built with HTML, CSS & JS • Deployed on Vercel</span>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919607468554" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    💬
+  </a>
+
+  <div id="comingSoonModal" class="modal">
+    <div class="modal-content">
+      <h3>Coming Soon!</h3>
+      <p>This project demo will be available shortly. Thank you for your interest!</p>
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // ---- Data: Projects (edit links as needed) ----
+    const projects = [
+      {
+        title: "Exam Seating Arrangement System",
+        stack: "Web • JSP & Servlets • MySQL",
+        summary: "Automated exam seating allocation based on student and room data with role‑based admin interface.",
+        bullets: [
+          "Modular components for admin login, DB connectivity, and dynamic seat assignment.",
+          "Configurable DB settings for multi‑env deployment; streamlined logistics via centralized UI."
+        ],
+        tags: ["Java", "JSP", "Servlets", "MySQL"],
+        links: { demo: "#", code: "#" }
+      },
+      {
+        title: "Abalone Age Predictor",
+        stack: "ML Web App • Streamlit",
+        summary: "Interactive ML app predicting abalone age using UCI dataset with multi‑model comparison.",
+        bullets: [
+          "Models: KNN, Random Forest, SVR, Linear/Ridge/Lasso, Decision Trees.",
+          "EDA, live predictions, RMSE/MAE/R² & CV; auto best‑model selection and insights."
+        ],
+        tags: ["Python", "scikit‑learn", "pandas", "Plotly", "Matplotlib"],
+        links: { demo: "#", code: "#" }
+      },
+      {
+        title: "Japango — AI Japanese Learning",
+        stack: "AI • Python • Google Gemini API",
+        summary: "Voice‑first platform for Japanese speaking practice with real‑time TTS and dynamic interactions.",
+        bullets: [
+          "Integrated Gemini API for language processing; Edge‑TTS for synthesis (FFMPEG).",
+          "Modular architecture and API‑driven extensibility for new skills."
+        ],
+        tags: ["Python", "Gemini API", "Edge‑TTS", "FFMPEG"],
+        links: { demo: "#", code: "#" }
+      },
+      {
+        title: "Kalpana — AI Image Generation",
+        stack: "Flask • Gradio • Auth",
+        summary: "Flask app using Gradio’s inference API for text‑to‑image with secure auth and image storage.",
+        bullets: [
+          "Flask‑Login auth; Blueprints & @login_required for access control.",
+          "PIL processing; static storage & real‑time render of generated images."
+        ],
+        tags: ["Flask", "Gradio", "PIL", "Auth"],
+        links: { demo: "#", code: "#" }
+      },
+      {
+        title: "Illicit Illustrations – AI-Based Artistic Image Transformation App",
+        stack: "Flutter • TensorFlow Lite • Python",
+        summary: "Designed and developed a Flask-based image generation web application that leverages Gradio’s inference API to generate images from textual prompts. Integrated Flask-Login for user authentication and PIL for image processing and rendering.",
+        bullets: [
+          "Implemented a user-facing interface with secure form handling, API request handling via Gradio Client, and real-time image generation and display.",
+          "Used Flask Blueprints for modular routing and @login_required decorators for access control. Image outputs are stored and served via a dedicated static directory."
+        ],
+        tags: ["Flask", "Gradio", "PIL", "Auth", "TensorFlow Lite", "Flutter"],
+        links: { demo: "#", code: "#" }
+      },
+      {
+        title: "Official Venue Booking App (College)",
+        stack: "Android • Java",
+        summary: "Institutional venue booking app with secure auth, real‑time status, and admin controls.",
+        bullets: [
+          "Streamlined reservations for students and faculty.",
+          "Optimized space utilization with administrative dashboards."
+        ],
+        tags: ["Android", "Java", "SQLite"],
+        links: { demo: "#", code: "#" }
+      }
+    ];
+
+    // ---- Render Projects ----
+    function renderProjects() {
+      const grid = document.getElementById('project-grid');
+      grid.innerHTML = '';
+      projects.forEach(p => {
+        const el = document.createElement('article');
+        el.className = 'card';
+        el.innerHTML = `
+          <h3>${p.title}</h3>
+          <div class="stack">${p.stack}</div>
+          <p>${p.summary}</p>
+          <ul style="margin:10px 0 0 18px; padding:0; color:#d3deec; font-size:.92rem;">${p.bullets.map(b => `<li>${b}</li>`).join('')}</ul>
+          <div class="chips">${p.tags.map(t => `<span class='chip'>${t}</span>`).join('')}</div>
+          <div class="actions">
+            <button class="link-btn" onclick="openModal()">Live Demo</button>
+            <a class="link-btn" href="${p.links.code}" target="_blank" rel="noopener">Source</a>
+          </div>
+        `;
+        grid.appendChild(el);
+      });
+    }
+
+    // ---- Modal functions ----
+    function openModal() {
+      document.getElementById('comingSoonModal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('comingSoonModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('comingSoonModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    // ---- Utilities ----
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const EMAIL = 'furkan710284@gmail.com';
+    document.getElementById('copyEmail').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(EMAIL);
+        document.getElementById('copyMsg').textContent = 'Email copied to clipboard.';
+      } catch (e) {
+        document.getElementById('copyMsg').textContent = EMAIL;
+      }
+    });
+
+    // Optional: set résumé link (replace with your URL or file)
+    document.getElementById('resumeLink').href = '#'; // e.g., '/resume.pdf'
+
+    renderProjects();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Furkan Shaikh",
+    "jobTitle": "ML & Backend Developer",
+    "url": "https://example.com",
+    "sameAs": ["https://www.linkedin.com/in/furkan-shaikh-b18949262/", "https://github.com/furkanshaikh313"]
+  }
+  </script>
+</body>
+</html>
