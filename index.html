@@ -99,7 +99,23 @@
     .chip { padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); font-size: .8rem; opacity: .9; }
 
     .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
-    .link-btn { font-size: .9rem; padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.14); }
+    .link-btn { 
+      font-size: .9rem; 
+      padding: 8px 12px; 
+      border-radius: 12px; 
+      border: 1px solid rgba(255,255,255,0.14); 
+      text-decoration: none; 
+      color: var(--text);
+      display: inline-block;
+      cursor: pointer;
+      background: transparent;
+      transition: all 0.2s ease;
+    }
+    .link-btn:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
 
     .about { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     @media (max-width: 819.98px) { .about { grid-template-columns: 1fr; } }
@@ -432,7 +448,7 @@
     function renderProjects() {
       const grid = document.getElementById('project-grid');
       grid.innerHTML = '';
-      projects.forEach(p => {
+      projects.forEach((p, index) => {
         const el = document.createElement('article');
         el.className = 'card';
         el.innerHTML = `
@@ -442,8 +458,8 @@
           <ul style="margin:10px 0 0 18px; padding:0; color:#d3deec; font-size:.92rem;">${p.bullets.map(b => `<li>${b}</li>`).join('')}</ul>
           <div class="chips">${p.tags.map(t => `<span class='chip'>${t}</span>`).join('')}</div>
           <div class="actions">
-            <button class="link-btn" onclick="openModal()">Live Demo</button>
-            <a class="link-btn" href="${p.links.code}" target="_blank" rel="noopener">Source</a>
+            <button class="link-btn" onclick="openModal()" type="button">Live Demo</button>
+            <a class="link-btn" href="${p.links.code}" target="_blank" rel="noopener" onclick="console.log('GitHub link clicked:', '${p.links.code}')">Source</a>
           </div>
         `;
         grid.appendChild(el);
@@ -482,7 +498,20 @@
     // Optional: set résumé link (replace with your URL or file)
     document.getElementById('resumeLink').href = '#'; // e.g., '/resume.pdf'
 
+    // Initialize the page
     renderProjects();
+
+    // Test function to verify links are working
+    function testLinks() {
+      projects.forEach((project, index) => {
+        console.log(`Project ${index + 1}: ${project.title}`);
+        console.log(`GitHub Link: ${project.links.code}`);
+        console.log('---');
+      });
+    }
+
+    // Call test function
+    testLinks();
   </script>
 
   <script type="application/ld+json">
@@ -497,4 +526,3 @@
   </script>
 </body>
 </html>
-
