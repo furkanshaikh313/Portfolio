@@ -32,7 +32,7 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color: var(--text);
       background: radial-gradient(1200px 600px at 80% -10%, rgba(106,227,255,0.12), transparent 60%),
                   radial-gradient(800px 400px at 5% -10%, rgba(124,242,154,0.12), transparent 60%),
@@ -71,6 +71,7 @@
       background: linear-gradient(135deg, rgba(106,227,255,0.18), rgba(124,242,154,0.18));
       border: 1px solid rgba(255,255,255,0.12);
       color: var(--text); font-weight: 600; text-decoration: none; box-shadow: var(--shadow);
+      transition: all 0.2s ease;
     }
     .btn:hover { transform: translateY(-1px); }
     .btn.secondary { background: transparent; border: 1px solid rgba(255,255,255,0.12); box-shadow: none; }
@@ -87,10 +88,18 @@
     @media (min-width: 820px) { .grid.cols-3 { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 819.98px) { .hero { grid-template-columns: 1fr; } }
 
+    /* Card with hover animation */
     .card {
       background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius-xl); padding: 18px; box-shadow: var(--shadow);
+      border-radius: var(--radius-xl);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.45);
     }
     .card h3 { margin: 0 0 6px; font-size: 1.05rem; }
     .card .stack { font-size: .9rem; color: var(--muted); margin-bottom: 10px; }
@@ -117,41 +126,22 @@
       text-decoration: none;
     }
 
+    /* White Live Demo button */
+    .link-btn.demo {
+      background: #fff;
+      color: #111;
+      border: none;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    }
+    .link-btn.demo:hover {
+      background: #e6faff;
+      color: #000;
+      transform: translateY(-2px);
+    }
+
     .about { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     @media (max-width: 819.98px) { .about { grid-template-columns: 1fr; } }
-    
-    .experience-item {
-        margin-bottom: 20px;
-    }
-
-    .experience-item h3 {
-        margin: 0;
-        font-size: 1.1rem;
-    }
-
-    .experience-item .role-title {
-        font-weight: bold;
-    }
-    
-    .experience-item .company-name {
-        font-style: italic;
-    }
-
-    .experience-item .date {
-        color: var(--muted);
-        font-size: 0.9rem;
-    }
-
-    .experience-item ul {
-        margin: 8px 0 0 18px;
-        padding: 0;
-        color: #d9e4f2;
-        font-size: 0.95rem;
-    }
-
-    .experience-item li {
-        margin-bottom: 4px;
-    }
 
     .kv { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
     .kv .kvc { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 12px; }
@@ -176,7 +166,6 @@
       overflow: auto;
       background-color: rgba(0,0,0,0.7);
       backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
     }
     .modal-content {
       background: var(--surface);
@@ -189,14 +178,8 @@
       text-align: center;
       box-shadow: var(--shadow);
     }
-    .modal-content h3 {
-      margin-top: 0;
-      font-size: 1.5rem;
-    }
-    .modal-content p {
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
+    .modal-content h3 { margin-top: 0; font-size: 1.5rem; }
+    .modal-content p { color: var(--muted); margin-bottom: 20px; }
     .close-btn {
       background: var(--brand);
       color: var(--bg);
@@ -206,9 +189,7 @@
       cursor: pointer;
       font-weight: 600;
     }
-    .close-btn:hover {
-      background: #50c4e8;
-    }
+    .close-btn:hover { background: #50c4e8; }
 
     /* Floating WhatsApp Button */
     .whatsapp-btn {
@@ -227,9 +208,7 @@
       z-index: 100;
       transition: transform 0.2s;
     }
-    .whatsapp-btn:hover {
-      transform: scale(1.1);
-    }
+    .whatsapp-btn:hover { transform: scale(1.1); }
   </style>
 </head>
 <body>
@@ -254,7 +233,7 @@
       <div>
         <h1>Building reliable systems at the intersection of <span style="color:var(--brand)">ML</span> and <span style="color:var(--brand-2)">Backend</span>.</h1>
         <p>
-          I design and develop production-grade applications across Web, Android, and AI/ML. Below is a curated selection of my college-era projects demonstrating end‑to‑end ownership—from data and models to APIs and UI.
+          I design and develop production-grade applications across Web, Android, and AI/ML. Below is a curated selection of my college-era projects demonstrating end-to-end ownership—from data and models to APIs and UI.
         </p>
         <div class="cta">
           <a class="btn" href="#projects">Explore Projects</a>
@@ -263,7 +242,7 @@
       <div class="hero-card" aria-hidden="true">
         <div class="kv">
           <div class="kvc"><div class="k">Primary Stack</div><div class="v">Python, Java, JS</div></div>
-          <div class="kvc"><div class="k">ML/DS</div><div class="v">scikit‑learn, pandas</div></div>
+          <div class="kvc"><div class="k">ML/DS</div><div class="v">scikit-learn, pandas</div></div>
           <div class="kvc"><div class="k">Backend</div><div class="v">Flask, JSP/Servlets</div></div>
           <div class="kvc"><div class="k">Infra</div><div class="v">MySQL, Streamlit</div></div>
         </div>
@@ -273,36 +252,6 @@
     <section id="projects" aria-label="Projects">
       <h2 class="section-title">Selected Projects</h2>
       <div class="grid cols-3" id="project-grid"></div>
-    </section>
-    
-    <section id="experience" aria-label="Experience">
-      <h2 class="section-title">Experience</h2>
-      <div class="card">
-        <div class="experience-item">
-          <h3>
-            <span class="role-title">Machine Learning Intern</span> - <span class="company-name">Bamboo Digital</span>
-            <br>
-            <span class="date">Oct 2023 – Feb 2023</span>
-          </h3>
-          <ul>
-            <li>Researched competitor AI model architectures, identified gaps in existing tools, and documented findings for technical reports and project documentation.</li>
-            <li>Designed system architecture diagrams (ERDs, journey maps) and developed an automated Python web scraper to collect and process datasets from sources like Google Ads Library and Meta Ads Library.</li>
-            <li>Cleaned, analyzed, and prepared datasets for machine learning workflows, and assisted in AI model testing and evaluation to ensure accuracy and performance.</li>
-          </ul>
-        </div>
-        <div class="experience-item">
-          <h3>
-            <span class="role-title">Managing Teacher</span> - <span class="company-name">The Empowering Earth Institute</span>
-            <br>
-            <span class="date">Jan 2024 - May 2024</span>
-          </h3>
-          <ul>
-            <li>Spearheaded the planning and execution of a premier event, as Teacher Incharge for over 250 in-person educators and facilitating virtual participation for more than 10,000 attendees.</li>
-            <li>Through the development and delivery of comprehensive workshops, keynote speeches, and AI tool exhibitions,</li>
-            <li>Successfully bridged the digital divide, enabling the integration of advanced AI technologies into Caribbean classrooms and transforming educational practices.</li>
-          </ul>
-        </div>
-      </div>
     </section>
 
     <section id="about" class="about" aria-label="About">
@@ -326,7 +275,7 @@
       </div>
       <div class="card" id="resume">
         <h2 class="section-title">Resume</h2>
-        <p>Prefer a concise overview? Download my one‑page resume.</p>
+        <p>Prefer a concise overview? Download my one-page resume.</p>
         <div class="actions">
           <a class="link-btn" href="#" id="resumeLink" download>Download PDF</a>
           <button class="link-btn" id="copyEmail" type="button" aria-label="Copy email">Copy Email</button>
@@ -346,9 +295,6 @@
           <a class="link-btn" href="https://wa.me/919607468554" target="_blank" rel="noopener">WhatsApp</a>
           <a class="link-btn" href="https://www.linkedin.com/in/furkan-shaikh-b18949262/" target="_blank" rel="noopener">LinkedIn</a>
           <a class="link-btn" href="https://github.com/furkanshaikh313" target="_blank" rel="noopener">GitHub</a>
-        </div>
-        <div class="cta" style="margin-top: 20px;">
-          <a class="btn secondary" href="#contact">Get in Touch</a>
         </div>
       </div>
     </section>
@@ -374,155 +320,112 @@
   </div>
 
   <script>
-    // ---- Data: Projects (edit links as needed) ----
     const projects = [
       {
         title: "Exam Seating Arrangement System",
         stack: "Web • JSP & Servlets • MySQL",
-        summary: "Automated exam seating allocation based on student and room data with role‑based admin interface.",
+        summary: "Automated exam seating allocation based on student and room data with role-based admin interface.",
         bullets: [
           "Modular components for admin login, DB connectivity, and dynamic seat assignment.",
-          "Configurable DB settings for multi‑env deployment; streamlined logistics via centralized UI."
+          "Configurable DB settings for multi-env deployment; streamlined logistics via centralized UI."
         ],
         tags: ["Java", "JSP", "Servlets", "MySQL"],
-        links: { demo: "#", code: "https://github.com/furkanshaikh313/Exam-Seating-Arrangement-System-Using-JSP-Servlet" }
+        links: { demo: "#", code: "https://github.com/furkanshaikh313/ExamSeating" }
       },
       {
-        title: "Abalone Age Predictor",
-        stack: "ML Web App • Streamlit",
-        summary: "Interactive ML app predicting abalone age using UCI dataset with multi‑model comparison.",
+        title: "Venue Booking App",
+        stack: "Android • Java • SQLite",
+        summary: "Mobile app for venue booking with authentication, SQLite persistence, and intuitive UI.",
         bullets: [
-          "Models: KNN, Random Forest, SVR, Linear/Ridge/Lasso, Decision Trees.",
-          "EDA, live predictions, RMSE/MAE/R² & CV; auto best‑model selection and insights."
+          "Developed with modular activities, integrated SQLite, and robust validation.",
+          "Enhanced usability via clean navigation, error handling, and secure booking workflow."
         ],
-        tags: ["Python", "scikit‑learn", "pandas", "Plotly", "Matplotlib"],
-        links: { demo: "#", code: "https://github.com/furkanshaikh313/Abalone-Age-Prediction" }
+        tags: ["Java", "SQLite", "Android Studio"],
+        links: { demo: "#", code: "https://github.com/furkanshaikh313/VenueBookingApp" }
       },
       {
-        title: "Japango — AI Japanese Learning",
-        stack: "AI • Python • Google Gemini API",
-        summary: "Voice‑first platform for Japanese speaking practice with real‑time TTS and dynamic interactions.",
+        title: "Japango",
+        stack: "Python • Gemini API • Edge-TTS",
+        summary: "AI-powered spoken Japanese language learning platform with voice-based interaction.",
         bullets: [
-          "Integrated Gemini API for language processing; Edge‑TTS for synthesis (FFMPEG).",
-          "Modular architecture and API‑driven extensibility for new skills."
+          "Integrated Google Gemini API and Edge-TTS for real-time speech synthesis.",
+          "Implemented retention-focused exercises; modular API-driven architecture."
         ],
-        tags: ["Python", "Gemini API", "Edge‑TTS", "FFMPEG"],
+        tags: ["Python", "Gemini API", "Edge-TTS"],
         links: { demo: "#", code: "https://github.com/furkanshaikh313/Japango" }
       },
       {
-        title: "Kalpana — AI Image Generation",
-        stack: "Flask • Gradio • Auth",
-        summary: "Flask app using Gradio's inference API for text‑to‑image with secure auth and image storage.",
+        title: "Abalone Age Predictor",
+        stack: "ML • Streamlit • Python",
+        summary: "Web app predicting abalone age via regression using physical attributes.",
         bullets: [
-          "Flask‑Login auth; Blueprints & @login_required for access control.",
-          "PIL processing; static storage & real‑time render of generated images."
+          "Multi-model regression comparison with automated best-model selection.",
+          "UI integrated with EDA, feature importance, and performance metrics."
         ],
-        tags: ["Flask", "Gradio", "PIL", "Auth"],
-        links: { demo: "#", code: "https://github.com/furkanshaikh313/Kalpana-Image-generation-website-" }
+        tags: ["Streamlit", "scikit-learn", "EDA"],
+        links: { demo: "#", code: "https://github.com/furkanshaikh313/AbaloneAgePredictor" }
       },
       {
-        title: "Healthcare Data Analysis using Power BI",
-        stack: "Analytics • Power BI • Python",
-        summary: "Interactive healthcare analytics dashboard with real‑time image style transfer capabilities for comprehensive data visualization.",
+        title: "Kalpana",
+        stack: "Flask • Gradio • Python",
+        summary: "AI-based image generation web app with Flask backend and Gradio inference API.",
         bullets: [
-          "Designed an interactive healthcare analytics dashboard in Power BI, leveraging Power Query for data transformation and DAX measures for advanced calculations. Structured relational models to enable seamless exploration of hospital datasets.",
-          "Implemented real-time image style transfer with Python, Keras, and OpenCV, enabling offline artistic transformations. Designed for optimal performance, intuitive usability, and visually compelling results without reliance on cloud processing."
+          "User auth via Flask-Login, modular routing with Blueprints.",
+          "Integrated Gradio Client and PIL for real-time image rendering."
         ],
-        tags: ["Power BI", "Power Query", "DAX", "Python", "Keras", "OpenCV"],
-        links: { demo: "#", code: "https://github.com/furkanshaikh313/Healthcare-Data-Analysis-using-PowerBI" }
+        tags: ["Flask", "Gradio", "PIL"],
+        links: { demo: "#", code: "https://github.com/furkanshaikh313/Kalpana" }
       },
       {
-        title: "Official Venue Booking App (College)",
-        stack: "Android • Java",
-        summary: "Institutional venue booking app with secure auth, real‑time status, and admin controls.",
+        title: "Illicit Illustrations",
+        stack: "Flutter • GANs • CV",
+        summary: "Mobile app applying artistic transformations to photos using GANs.",
         bullets: [
-          "Streamlined reservations for students and faculty.",
-          "Optimized space utilization with administrative dashboards."
+          "On-device transformations for fast and offline usage.",
+          "Smooth Flutter UI with efficient GAN-based filters."
         ],
-        tags: ["Android", "Java", "SQLite"],
-        links: { demo: "#", code: "https://github.com/furkanshaikh313/Venue-booking" }
+        tags: ["Flutter", "GANs", "Computer Vision"],
+        links: { demo: "#", code: "https://github.com/furkanshaikh313/IllicitIllustrations" }
       }
     ];
 
-    // ---- Render Projects ----
-    function renderProjects() {
-      const grid = document.getElementById('project-grid');
-      grid.innerHTML = '';
-      projects.forEach((p, index) => {
-        const el = document.createElement('article');
-        el.className = 'card';
-        el.innerHTML = `
-          <h3>${p.title}</h3>
-          <div class="stack">${p.stack}</div>
-          <p>${p.summary}</p>
-          <ul style="margin:10px 0 0 18px; padding:0; color:#d3deec; font-size:.92rem;">${p.bullets.map(b => `<li>${b}</li>`).join('')}</ul>
-          <div class="chips">${p.tags.map(t => `<span class='chip'>${t}</span>`).join('')}</div>
-          <div class="actions">
-            <button class="link-btn" onclick="openModal()" type="button">Live Demo</button>
-            <a class="link-btn" href="${p.links.code}" target="_blank" rel="noopener" onclick="console.log('GitHub link clicked:', '${p.links.code}')">Source</a>
-          </div>
-        `;
-        grid.appendChild(el);
-      });
-    }
-
-    // ---- Modal functions ----
-    function openModal() {
-      document.getElementById('comingSoonModal').style.display = 'block';
-    }
-
-    function closeModal() {
-      document.getElementById('comingSoonModal').style.display = 'none';
-    }
-
-    window.onclick = function(event) {
-      const modal = document.getElementById('comingSoonModal');
-      if (event.target == modal) {
-        modal.style.display = 'none';
-      }
-    }
-
-    // ---- Utilities ----
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const EMAIL = 'furkan710284@gmail.com';
-    document.getElementById('copyEmail').addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(EMAIL);
-        document.getElementById('copyMsg').textContent = 'Email copied to clipboard.';
-      } catch (e) {
-        document.getElementById('copyMsg').textContent = EMAIL;
-      }
+    const grid = document.getElementById("project-grid");
+    projects.forEach(p => {
+      const el = document.createElement("div");
+      el.className = "card";
+      el.innerHTML = `
+        <h3>${p.title}</h3>
+        <div class="stack">${p.stack}</div>
+        <p>${p.summary}</p>
+        <ul>${p.bullets.map(b => `<li>${b}</li>`).join("")}</ul>
+        <div class="chips">${p.tags.map(t => `<span class="chip">${t}</span>`).join("")}</div>
+        <div class="actions">
+          <a href="${p.links.demo}" class="link-btn demo" onclick="handleDemoClick(event)">Live Demo</a>
+          <a href="${p.links.code}" class="link-btn" target="_blank">Code</a>
+        </div>
+      `;
+      grid.appendChild(el);
     });
 
-    // Optional: set résumé link (replace with your URL or file)
-    document.getElementById('resumeLink').href = '#'; // e.g., '/resume.pdf'
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Initialize the page
-    renderProjects();
-
-    // Test function to verify links are working
-    function testLinks() {
-      projects.forEach((project, index) => {
-        console.log(`Project ${index + 1}: ${project.title}`);
-        console.log(`GitHub Link: ${project.links.code}`);
-        console.log('---');
+    document.getElementById("copyEmail").addEventListener("click", () => {
+      navigator.clipboard.writeText("furkan710284@gmail.com").then(() => {
+        document.getElementById("copyMsg").textContent = "Email copied!";
       });
+    });
+
+    function handleDemoClick(e) {
+      if (e.target.getAttribute("href") === "#") {
+        e.preventDefault();
+        openModal();
+      }
     }
-
-    // Call test function
-    testLinks();
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Furkan Shaikh",
-    "jobTitle": "ML & Backend Developer",
-    "url": "https://example.com",
-    "sameAs": ["https://www.linkedin.com/in/furkan-shaikh-b18949262/", "https://github.com/furkanshaikh313"]
-  }
+    function openModal() { document.getElementById("comingSoonModal").style.display = "block"; }
+    function closeModal() { document.getElementById("comingSoonModal").style.display = "none"; }
+    window.onclick = function(event) {
+      if (event.target == document.getElementById("comingSoonModal")) closeModal();
+    }
   </script>
 </body>
 </html>
